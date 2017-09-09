@@ -4,15 +4,19 @@ import scipy.misc
 import Image
 import scipy.io
 import os
-from os.path import join
+from os.path import join, splitext
 import sys
 sys.path.insert(0, 'caffe/python')
 import caffe
 caffe.set_mode_gpu()
 caffe.set_device(0)
-net = caffe.Net('model/hed_test.pt','snapshot/hed_pretrained_bsds.caffemodel', caffe.TEST)
-test_dir = 'data/HED-BSDS/test' # test images directory
-save_dir = 'data/edge-results/hed_pretrained' # directory to save results
+#####
+model = "hed_pretrained_bsds.caffemodel" # caffemodel
+netpt = "hed_test.pt"  # net prototxt
+#####
+net = caffe.Net(join('model', netpt),join('snapshot', model), caffe.TEST)
+test_dir = 'data/HED-BSDS/test/' # test images directory
+save_dir = join('data/edge-results/', splitext(model)[0]) # directory to save results
 if not os.path.exists(save_dir):
     os.makedirs(save_dir)
 imgs = [i for i in os.listdir(test_dir) if '.jpg' in i]
