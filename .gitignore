@@ -1,0 +1,8 @@
+*.caffemodel
+*.solverstate
+*.pyc
+data/
+*~
+*.pt
+*.prototxt
+*.log
