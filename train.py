@@ -23,6 +23,5 @@ for p in solver.net.params:
   for i in range(len(param)):
     print p, "param[%d]: mean=%.5f, std=%.5f"%(i, solver.net.params[p][0].data.mean(), \
     solver.net.params[p][0].data.mean())
-raw_input("Press Enter to Continue...")
 solver.solve()
 
